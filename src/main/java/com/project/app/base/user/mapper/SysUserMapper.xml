@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.app.base.user.mapper.SysUserMapper">
+
+    <sql id="sysUserSql001">
+        ${alias}.user_name,${alias}.user_code
+    </sql>
+    
+    <select id="getAllUsers" resultType="com.project.app.base.user.domain.SysUser">
+        select * from sys_user
+    </select>
+    
+    <select id="sysUserTest001" resultType="com.project.app.base.user.domain.SysUser">
+        select
+            <include refid="sysUserSql001">
+                <property name="alias" value="t1"/>
+            </include>
+            from sys_user t1
+    </select>
+
+
+</mapper>

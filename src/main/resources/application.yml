@@ -2,10 +2,28 @@ spring:
   application:
     name: base
   datasource:
-    url: jdbc:mysql://localhost:3306/product?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://localhost:3306/projectbase?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: project_base
+    password: 123654
+  liquibase:
+    enabled: true
+    change-log: 'classpath:db/liquibase/changelog-master.xml'
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka/
     server:
       enable-self-preservation: false
+mybatis-plus:
+  mapper-locations: com/project/app/base/**/mapper/*.xml
+  type-aliases-package: com.project.app.**.**.domain
+  configuration:
+    #将mybatis的sql日志打印到idea的MyBatis log plugin控制台
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+logging:
+  pattern:
+    console: "%d - %msg%n"
+  file:
+    path: "logs"
+    name: "logs\\base.log"

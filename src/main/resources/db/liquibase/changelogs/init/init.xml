@@ -1,0 +1,40 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <property name="now" value="now()" dbms="mysql"/>
+
+    <changeSet id="init_sys_user" author="dongliang.li">
+        <createTable tableName="sys_user" remarks="用户信息表">
+            <column name="ID" type="bigint(32)" remarks="ID">
+                <constraints primaryKey="true" nullable="false" primaryKeyName="sys_user_pk"/>
+            </column>
+            <column name="user_code" type="varchar(255)" remarks="用户代码/账号">
+                <constraints unique="true" nullable="true"/>
+            </column>
+            <column name="user_name" type="varchar(255)" remarks="用户名">
+                <constraints nullable="true"/>
+            </column>
+            <column name="password" type="varchar(255)" remarks="密码">
+                <constraints nullable="true"/>
+            </column>
+            <column name="description" type="varchar(255)" remarks="备注"/>
+            <column name="email" type="varchar(255)" remarks="电子邮箱"/>
+            <column name="mobile" type="varchar(16)" remarks="手机"/>
+            <column name="frozen_flag" type="varchar(3)" remarks="冻结标识"/>
+            <column name="creation_date" type="timestamp" remarks="创建时间">
+                <constraints nullable="true"/>
+            </column>
+            <column name="created_by" type="bigint" remarks="创建人">
+                <constraints nullable="true"/>
+            </column>
+            <column name="last_update_date" type="timestamp" remarks="最后更新时间">
+                <constraints nullable="true"/>
+            </column>
+            <column name="last_update_by" type="bigint" remarks="最后更新人">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

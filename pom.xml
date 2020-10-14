@@ -8,6 +8,7 @@
         <version>2.3.1.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+
     <groupId>com.project.app</groupId>
     <artifactId>base</artifactId>
     <version>0.0.1-SNAPSHOT</version>
@@ -17,6 +18,7 @@
     <properties>
         <java.version>11</java.version>
         <spring-cloud.version>Hoxton.SR5</spring-cloud.version>
+        <mybatis-plus.version>3.2.0</mybatis-plus.version>
     </properties>
 
     <dependencies>
@@ -49,6 +51,19 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <scope>runtime</scope>
+        </dependency>
+
+        <!--mybatis-->
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>2.1.0</version>
+        </dependency>
+        <!-- mybatis-plus -->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>${mybatis-plus.version}</version>
         </dependency>
 
         <!--liquibase-->
@@ -86,6 +101,14 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
+        </resources>
     </build>
 
 </project>
